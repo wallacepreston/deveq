@@ -1,15 +1,16 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
 
-import {Navbar} from './components'
-import Routes from './routes'
+import App from './components/App'
 
-const App = () => {
-  return (
-    <div>
-      <Navbar />
-      <Routes />
-    </div>
-  )
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('app')
+)
+
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install() // eslint-disable-line global-require
 }
-
-export default App

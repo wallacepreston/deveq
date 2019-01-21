@@ -1,6 +1,18 @@
-const db = require('./db')
+'use strict'
 
-// register models
-require('./models')
+const db = require('./database')
 
-module.exports = db
+// The purpose of this module is to bring our Sequelize instance (`db`) together
+// with our models (which we should define in separate modules in this directory).
+
+// REQUIRE IN OTHER MODELS
+
+const Scenario = require('./scenarios')
+
+// ASSOCIATIONS
+
+module.exports = {
+  // Include your models in this exports object as well!
+  db,
+  Scenario
+}

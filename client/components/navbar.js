@@ -1,56 +1,51 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {logout} from '../store'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+export default class NavBar extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-dark bg-primary navbar-expand-md ">
+          <Link to="/">
+            <span id="nav-logo">
+              <img src="/dev-eq-logo.png" width="40" />
+            </span>
+            <div className="navbar-brand">Dev-EQ</div>
+          </Link>
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+              <Link to="/">
+                <div className="nav-item nav-link">
+                  Home <span className="sr-only">(current)</span>
+                </div>
+              </Link>
+
+              <Link to="/learn">
+                <div className="nav-item nav-link">Learn</div>
+              </Link>
+              <div className="nav-item nav-link">Why EQ?</div>
+              <div className="nav-item nav-link">About Us</div>
+            </div>
+          </div>
+          <div className="navbar-brand my-2 my-lg-0" href="#">
+            Helping Developers Emote
+          </div>
+        </nav>
+      </div>
+    )
   }
-}
-
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
-
-/**
- * PROP TYPES
- */
-Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
 }
