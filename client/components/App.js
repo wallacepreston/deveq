@@ -3,7 +3,7 @@ import {Switch, Route, withRouter} from 'react-router-dom'
 
 import NotFound from './NotFound'
 
-import NavBar from './NavBar'
+import NavBar from './navbar'
 import Home from './Home'
 import WelcomeToGame from './WelcomeToGame'
 import SingleScenario from './SingleScenario'

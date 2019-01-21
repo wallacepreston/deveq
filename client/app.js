@@ -11,6 +11,3 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
-if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install() // eslint-disable-line global-require
-}
