@@ -147,6 +147,8 @@ class Learn extends React.PureComponent {
   }
 
   startVideo = () => {
+    console.log('>>>>>>>>> startVideo')
+
     // start video
     this.state.vid.play()
     // start tracking
@@ -156,6 +158,7 @@ class Learn extends React.PureComponent {
     })
     // start loop to draw face
     this.drawLoop()
+    console.log('>>>>>>>>> startVideo end')
   }
 
   drawLoop = () => {

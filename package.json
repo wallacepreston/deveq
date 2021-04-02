@@ -16,7 +16,7 @@
     "precommit": "lint-staged",
     "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md}\"",
-    "postinstall": "touch secrets.js",
+    "postinstall": "touch secrets.js && npm run build-client",
     "seed": "node seed.js",
     "start": "node server",
     "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
@@ -42,7 +42,7 @@
     "compression": "^1.7.3",
     "css-loader": "^2.1.0",
     "exports-loader": "^0.7.0",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "file-loader": "^3.0.1",
     "history": "^4.6.3",
     "html-loader": "^0.5.5",
@@ -52,14 +52,14 @@
     "null-loader": "^0.1.1",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
-    "pg": "^6.1.2",
+    "pg": "^8.5.1",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
-    "sequelize": "^4.38.0",
+    "sequelize": "^6.5.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "@babel/core": "^7.0.0-beta.55",
@@ -92,7 +92,5 @@
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }

@@ -9,12 +9,24 @@ const pkg = require('../../package.json')
 
 console.log(chalk.yellow('Opening database connection'))
 
-const db = new Sequelize(
-  process.env.DATABASE_URL || `postgres://localhost:5432/${pkg.name // FOR DEPLOYING TO HEROKU
-    }`, // FOR DEVELOPMENT
-  {
-    logging: false // so we don't see all the SQL queries getting made
-  }
-)
+const {DATABASE_NAME = pkg.name} = process.env
+const {
+  DATABASE_URL = `postgres://localhost:5432/${DATABASE_NAME}`
+} = process.env
 
+const env = process.env.NODE_ENV || 'development'
+
+const dialectOptions =
+  env === 'production'
+    ? {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      }
+    : {}
+
+const db = new Sequelize(DATABASE_URL, {
+  logging: false,
+  dialectOptions
+})
 module.exports = db
